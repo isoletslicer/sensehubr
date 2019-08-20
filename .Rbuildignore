@@ -9,4 +9,3 @@
 ^\.R$
 ^\.R2$
 ^pkgdown$
-^codecov\.yml$

@@ -43,6 +43,6 @@ perfume_qda_experts \%>\%
     pres_order = rank,
     attribute = spicy:wrapping
   ) \%>\%
-  analyse(choice = "local") \%>\%
+  analyse_local() \%>\%
   visualise()
 }

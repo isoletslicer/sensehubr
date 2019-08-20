@@ -2,7 +2,7 @@
 % Please edit documentation in R/create-template.R
 \name{create_template}
 \alias{create_template}
-\title{Create template for sensory table}
+\title{Create template for sensory data}
 \usage{
 create_template(data, attribute, hedonic = FALSE)
 }

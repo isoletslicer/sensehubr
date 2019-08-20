@@ -1,4 +1,26 @@
-#' @importFrom tibble tbl_sum
+#' Provide a succinct summary of an object
+#'
+#' `tbl_sum()` gives a brief textual description of a table-like object,
+#' which should include the dimensions and the data source in the first element,
+#' and additional information in the other elements (such as grouping for \pkg{dplyr}).
+#' The default implementation forwards to [pillar::obj_sum()].
+#'
+#' @return A named character vector, describing the dimensions in the first element
+#'   and the data source in the name of the first element.
+#'
+#' @seealso [pillar::type_sum()], [pillar::is_vector_s3()]
+#' @param x Object to summarise
+#' @export
+tbl_sum <- function(x) {
+  UseMethod("tbl_sum", x)
+}
+
+#' @importFrom tibble obj_sum
+#' @export
+tbl_sum.default <- function(x) {
+  c("Description" = obj_sum(x))
+}
+
 #' @export
 tbl_sum.tbl_sensory_design <- function(x) {
   c(
@@ -8,7 +30,6 @@ tbl_sum.tbl_sensory_design <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_template <- function(x) {
   c(
@@ -19,7 +40,6 @@ tbl_sum.tbl_sensory_template <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_performance_panel <- function(x) {
   c(
@@ -28,7 +48,6 @@ tbl_sum.tbl_sensory_performance_panel <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_performance_panelist <- function(x) {
   c(
@@ -69,7 +88,6 @@ print.tbl_sensory_performance <- function(x, ...) {
   invisible(x)
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_qda <- function(x) {
   c(
@@ -82,7 +100,6 @@ tbl_sum.tbl_sensory_qda <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_cata <- function(x) {
   c(
@@ -95,7 +112,6 @@ tbl_sum.tbl_sensory_cata <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_jar <- function(x) {
   c(
@@ -108,7 +124,6 @@ tbl_sum.tbl_sensory_jar <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_penalty <- function(x) {
   c(
@@ -119,7 +134,6 @@ tbl_sum.tbl_sensory_penalty <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_local <- function(x) {
   c(
@@ -130,7 +144,6 @@ tbl_sum.tbl_sensory_local <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_liking <- function(x) {
   c(
@@ -141,7 +154,6 @@ tbl_sum.tbl_sensory_liking <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @importFrom glue glue
 #' @export
 tbl_sum.tbl_sensory_preference_product <- function(x) {
@@ -151,7 +163,6 @@ tbl_sum.tbl_sensory_preference_product <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @importFrom glue glue
 #' @export
 tbl_sum.tbl_sensory_preference_panelist <- function(x) {
@@ -186,7 +197,6 @@ print.tbl_sensory_preference <- function(x, ...) {
   invisible(x)
 }
 
-#' @importFrom tibble tbl_sum
 #' @export
 tbl_sum.tbl_sensory_global_eigenvalue <- function(x) {
   c(
@@ -195,7 +205,6 @@ tbl_sum.tbl_sensory_global_eigenvalue <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @importFrom glue glue
 #' @export
 tbl_sum.tbl_sensory_global_product <- function(x) {
@@ -205,7 +214,6 @@ tbl_sum.tbl_sensory_global_product <- function(x) {
   )
 }
 
-#' @importFrom tibble tbl_sum
 #' @importFrom glue glue
 #' @export
 tbl_sum.tbl_sensory_global_attribute <- function(x) {
